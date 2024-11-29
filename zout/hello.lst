@@ -1,0 +1,40 @@
+   1:				; For LDOS
+   2:				; ./zmac ~/Development/trs80/helloworld/hello.asm --od ~/Development/trs80/helloworld/
+   3:				; ./trs80gp -ld ~/Development/trs80/helloworld/hello.cmd
+   4:				
+   5:     -	7000          		org	$7000
+   6:				
+   7:     -	4467          	@DISPLY	equ	$4467		;pg 6-66
+   8:     -	402D          	@EXIT	equ	$402d		;pg 6-60
+   9:				
+  10:     -	000D          	ENTER	equ	$0d			;@DISPLY with newline
+  11:				
+  12:     -	7000  48656C6C	text	defb	'Hello world!',ENTER
+	              6F20776F
+	              726C6421
+	              0D
+  13:				
+  14:     -	700D          	main:
+  15:    0+10	700D  210070  			ld		hl,text
+  16:   10+17	7010  CD6744  			call	@DISPLY
+  17:   27+17	7013  CD2D40  			call	@EXIT
+  18:     -	700D          			end		main
+
+
+
+Statistics:
+
+     3	passes
+     0	jr promotions
+     5	symbols
+    22	bytes
+
+
+
+Symbol Table:
+
+@DISPLY        =4467      17511
+@EXIT          =402D      16429
+ENTER          =0D        13
+main            700D      28685
+text            7000      28672

@@ -1,0 +1,34 @@
+binary-debuggable-source
+0000 0000 f /home/ccole/Development/trs80/helloworld/src/hello.asm
+0000 0000 s ; For LDOS
+0000 0000 s ; ./zmac ~/Development/trs80/helloworld/hello.asm --od ~/Development/trs80/helloworld/
+0000 0000 s ; ./trs80gp -ld ~/Development/trs80/helloworld/hello.cmd
+0000 0000 s 
+7000 7000 s 	org	$7000
+7000 7000 s 
+7000 7000 s @DISPLY	equ	$4467		;pg 6-66
+7000 7000 s @EXIT	equ	$402d		;pg 6-60
+7000 7000 s 
+7000 7000 s ENTER	equ	$0d			;@DISPLY with newline
+7000 7000 s 
+7000 7000 d 48656c6c6f20776f726c64210d
+7000 7000 u 0d 02
+7000 7000 s text	defb	'Hello world!',ENTER
+700d 700d s 
+700d 700d s main:
+700d 700d d 210070
+700d 700d u 03 01
+700d 700d s 		ld		hl,text
+7010 7010 d cd6744
+7010 7010 u 03 01
+7010 7010 s 		call	@DISPLY
+7013 7013 d cd2d40
+7013 7013 u 03 01
+7013 7013 s 		call	@EXIT
+7016 7016 s 		end		main
+700d e
+700d a main
+402d v @EXIT
+4467 v @DISPLY
+000d v ENTER
+7000 a text
